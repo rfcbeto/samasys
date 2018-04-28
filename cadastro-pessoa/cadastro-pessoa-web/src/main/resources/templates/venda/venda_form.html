@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  ng-app="cadCliente">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro</title>
+	<link rel="icon" type="../static/imagens/favicon.png" th:href="@{/imagens/favicon.png}" sizes="16x16"/>
+	
+		 <!-- INICIO BOOTSTRAP -->
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		 <!-- FIM BOOTSTRAP -->
+		 <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}" />	
+		 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY6GIc60uSo1I-_JLtfc5Xq9cg0HlZ_9s"></script>
+      	 <!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY6GIc60uSo1I-_JLtfc5Xq9cg0HlZ_9s&callback=loadMap()" async defer></script-->
+      	 
+	</head>
+	<body ng-controller="controllerVenda">
+			<img th:src="@{/imagens/icone.png}" alt="Icone Cadastro" style="width:41px;height:44px" />
+			<h4>REGISTRAR VENDA</h4>
+		<hr />
+		<form class="form-horizontal" action="#" th:action="@{/venda/salvar}" th:object="${fto}" method="post" >
+			
+			<fieldset>
+				<legend>Dados da venda</legend>
+				<div class="form-group">
+					<div class="col-md" th:classappend="${#fields.hasErrors('quantidade')}? 'has-error'">
+						<label class="control-label col-sm-2" for="totalVenda">Quantidade:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" placeholder="Quantidade" th:field="*{quantidade}"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md" th:classappend="${#fields.hasErrors('totalVenda')}? 'has-error'">
+						<label class="control-label col-sm-2" for="totalVenda">Total:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" placeholder="informe o valor total" th:field="*{totalVenda}" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+			</fieldset>	
+			<div class="form-group" >
+				<div class="control-label col-sm-6">
+					<button type="submit" class="btn btn-success">Salvar</button>
+					<button type="reset" class="btn btn-warning">Limpar</button>
+					<button type="submit" class="btn btn-danger">Cancelar</button>
+				</div>
+			</div>
+		</form>
+		
+<!-- 
+* produto
+	- Descrição
+	- Valor unitário
+* Cliente
+	- Dados do cliente	
+* Vendedor
+	- Dados do vendedor	
+  	* Venda
+  		- Quantidade
+  		- Valor total
+  		- Forma de pagamento
+  		- Status
+  		- Data Hora
+ -->	
+ 	 <script>
+	    window.onload = function() {
+	    	  console.log('window - onload'); // 4th
+	    	};
+	    document.onload = function() {
+	    	  console.log('document - onload'); // DOES NOT HAPPEN
+	    	};
+	    	angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache']).controller('AppCtrl', function() {
+	    	  this.myDate = new Date();
+	    	  this.isOpen = false;
+	    	});
+	    	
+			var app = angular.module('cadCliente',[]);
+			
+			app.controller('controllerVenda', function($scope){
+				$scope.data = new Date();
+				$scope.exibe = function(seuNome){
+					return seuNome ? true : false;
+				};
+			});
+	</script>
+	</body>
+</html>

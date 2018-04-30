@@ -30,10 +30,10 @@ public class EnderecoService {
 		
 		return enderecos;
 	}
-	
+	/*
 	public List<Endereco> getEnderecoByNomePessoa(String nome){
 		return repository.getEnderecoByNomePessoa(nome);
-	}
+	}*/
 
 	public Endereco findOne(Long id) {
         return repository.findOne(id);

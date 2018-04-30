@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cadastro.cliente.Cliente;
+import br.com.cadastro.converter.ClienteConverter;
+import br.com.cadastro.converter.PessoaConverter;
+import br.com.cadastro.fto.ClienteFTO;
 import br.com.cadastro.fto.PessoaFTO;
-import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Pessoa;
 import br.com.cadastro.repository.ClienteRepository;
 import br.com.cadastro.repository.PessoaRepository;
@@ -18,11 +20,16 @@ import br.com.cadastro.repository.PessoaRepository;
 public class PessoaService {
 	
 	@Autowired
+	private PessoaConverter converter;
+
+	@Autowired
 	private PessoaRepository repository;
 	
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private ClienteConverter clienteConverter;
 	
+	@Autowired
+	private ClienteRepository clienteRepository;
 	
 	public List<Pessoa> findAll(){
 		List<Pessoa> pessoas = new ArrayList<>();
@@ -43,7 +50,10 @@ public class PessoaService {
         return repository.findOne(id);
     }
 	
-	public Pessoa insert(Pessoa pessoa){
+	public Pessoa insert(PessoaFTO fto){
+		/*Converter fto para Entidade*/
+		Pessoa pessoa = converter.convert(fto);
+		
 		return repository.save(pessoa);
 	}
 	
@@ -51,30 +61,9 @@ public class PessoaService {
 		return clienteRepository.findOne(id);
 	};
 	
-	public Cliente insertCliente(Cliente cliente){
+	public Cliente insertCliente(ClienteFTO fto){
+		Cliente cliente = clienteConverter.convert(fto);
+		
 		return clienteRepository.save(cliente);
-	}
-	
-	public Pessoa getPessoa() {
-		Pessoa p = new Pessoa();
-		p.setNome("Etelvino da silva");
-		p.setCpf("12345678910");
-		p.setEstadoCivil("solteiro");
-		p.setRg("123456789");
-		p.setSexo("Feminino");
-		
-		List<Endereco> lEndereco = new ArrayList<>();
-		Endereco end1 = new Endereco();
-		end1.setPessoa(p);
-		end1.setBairro("Centro");
-		end1.setCep("12345678");
-		end1.setComplemento("Apt 555");
-		end1.setMunicipio("Centro");
-		end1.setNumero(123);
-		end1.setRua("RUA teste cadastro");
-		lEndereco.add(end1);
-		
-		p.setEnderecos(lEndereco);
-		return p;
 	}
 }

@@ -1,15 +1,17 @@
 package br.com.cadastro.cliente;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Pessoa;
 
 @Entity
@@ -18,26 +20,17 @@ public class Cliente extends Pessoa implements Serializable{
 
 	private static final long serialVersionUID = -2821218991052026195L;
 
-	@Id
-	@Column(name = "ID_CLIENTE")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
 	@NotNull
 	@Column(name="TIPO_CLIENTE")
 	private String tipoCliente;
 	
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Endereco> enderecos;
+	
 	/* Criar um gerenciador de recados.
 	 * private List<Recado> recados; 
 	 */
-	
-	public long getId() {
-		return id;
-	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getTipoCliente() {
 		return tipoCliente;
@@ -47,17 +40,24 @@ public class Cliente extends Pessoa implements Serializable{
 		this.tipoCliente = tipoCliente;
 	}
 
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + 
-				",\n tipoCliente=" + tipoCliente + "]";
+		return "Cliente [tipoCliente=" + tipoCliente + ", enderecos=" + enderecos + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
 		result = prime * result + ((tipoCliente == null) ? 0 : tipoCliente.hashCode());
 		return result;
 	}
@@ -71,7 +71,10 @@ public class Cliente extends Pessoa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (id != other.id)
+		if (enderecos == null) {
+			if (other.enderecos != null)
+				return false;
+		} else if (!enderecos.equals(other.enderecos))
 			return false;
 		if (tipoCliente == null) {
 			if (other.tipoCliente != null)

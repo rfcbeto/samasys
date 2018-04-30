@@ -1,7 +1,5 @@
 package br.com.cadastro.fto;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
@@ -15,71 +13,84 @@ public class PessoaFTO {
 	@NotNull
 	@Size(min=2,max=30)
 	private String nome;
-	private Date dataNascimento;
 	@NotNull
 	@CPF
 	private String cpf;
+	private String rg;
+	private String sexo;
+	private String celular;
+	private String telefone;
+	private String estadoCivil;
+	private Date dataNascimento;
 	private String naturalidade;
-	private String identidade;
 	private EnderecoFTO endereco;
-
+	
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String dataNascimentoString = formatter.format(dataNascimento); 
-        try {
-            this.dataNascimento = formatter.parse(dataNascimentoString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	public String getRg() {
+		return rg;
+	}
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public String getCelular() {
+		return celular;
+	}
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 	public String getNaturalidade() {
 		return naturalidade;
 	}
-
 	public void setNaturalidade(String naturalidade) {
 		this.naturalidade = naturalidade;
 	}
-
-	public String getIdentidade() {
-		return identidade;
-	}
-
-	public void setIdentidade(String identidade) {
-		this.identidade = identidade;
-	}
-
 	public EnderecoFTO getEndereco() {
 		return endereco;
 	}
-
 	public void setEndereco(EnderecoFTO endereco) {
 		this.endereco = endereco;
 	}
 
 	@Override
 	public String toString() {
-		return "PessoaFTO [nome=" + nome + ", dataNascimento=" + dataNascimento + ", cpf=" + cpf + ", naturalidade="
-				+ naturalidade + ", identidade=" + identidade + ", endereco=" + endereco + "]";
+		return "PessoaFTO [nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", sexo=" + sexo + ", celular=" + celular
+				+ ", telefone=" + telefone + ", estadoCivil=" + estadoCivil + ", dataNascimento=" + dataNascimento
+				+ ", naturalidade=" + naturalidade + ", endereco=" + endereco + "]";
 	}
+	
 }

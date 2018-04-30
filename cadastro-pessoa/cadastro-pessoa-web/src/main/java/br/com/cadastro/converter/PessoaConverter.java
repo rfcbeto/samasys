@@ -1,4 +1,4 @@
-package br.com.cadastro.service;
+package br.com.cadastro.converter;
 
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,10 @@ public class PessoaConverter implements Converter<Pessoa, PessoaFTO, PessoaFTO>{
 
 	@Override
 	public Pessoa convert(PessoaFTO fto) {
-		return mapper.map(fto, Pessoa.class);
+		Pessoa pessoa = new Pessoa();
+		pessoa = mapper.map(fto, Pessoa.class);
+		
+		return pessoa;
 	}
 
 }

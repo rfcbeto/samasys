@@ -1,7 +1,5 @@
 package br.com.cadastro.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import br.com.cadastro.cliente.Cliente;
 import br.com.cadastro.fto.ClienteFTO;
-import br.com.cadastro.model.Endereco;
 import br.com.cadastro.service.PessoaService;
 
 @Controller
@@ -61,37 +56,9 @@ public class ClienteController {
 			return mv;
 		}
 		
-		pessoaService.insertCliente(getCliente());
+		pessoaService.insertCliente(fto);
 		System.out.println(fto);
 		LOGGER.info(">>> SALVAR PESSOA");
 		return mv;
-	}
-
-	public Cliente getCliente() {
-		
-		Cliente p = new Cliente();
-		p.setNome("Jose");
-		p.setCpf("12345678910");
-		p.setEstadoCivil("solteiro");
-		p.setRg("123456789");
-		p.setSexo("Masculino");
-		p.setTipoCliente("varejo");
-		p.setCelular("977777777");
-		p.setTelefone("31988888888");
-		p.setDataNascimento(new Date());
-		
-		List<Endereco> lEndereco = new ArrayList<>();
-		Endereco end1 = new Endereco();
-		end1.setPessoa(p);
-		end1.setBairro("Centro");
-		end1.setCep("12345678");
-		end1.setComplemento("Apt 555");
-		end1.setMunicipio("Centro");
-		end1.setNumero(123);
-		end1.setRua("RUA teste cadastro");
-		lEndereco.add(end1);
-		
-		p.setEnderecos(lEndereco);
-		return p;
 	}
 }

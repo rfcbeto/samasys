@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cadastro.fto.PessoaFTO;
-import br.com.cadastro.model.Endereco;
 import br.com.cadastro.model.Pessoa;
 import br.com.cadastro.service.PessoaService;
 
@@ -93,32 +92,8 @@ public class PessoaController {
 			return mv;
 		}
 		
-		pessoaService.insert(getPessoa());
-		System.out.println(fto);
+		pessoaService.insert(fto);
 		LOGGER.info(">>> SALVAR PESSOA");
 		return mv;
-	}
-	
-	public Pessoa getPessoa() {
-		Pessoa p = new Pessoa();
-		p.setNome("Etelvino da silva");
-		p.setCpf("12345678910");
-		p.setEstadoCivil("solteiro");
-		p.setRg("123456789");
-		p.setSexo("Feminino");
-		
-		List<Endereco> lEndereco = new ArrayList<>();
-		Endereco end1 = new Endereco();
-		end1.setPessoa(p);
-		end1.setBairro("Centro");
-		end1.setCep("12345678");
-		end1.setComplemento("Apt 555");
-		end1.setMunicipio("Centro");
-		end1.setNumero(123);
-		end1.setRua("RUA teste cadastro");
-		lEndereco.add(end1);
-		
-		p.setEnderecos(lEndereco);
-		return p;
 	}
 }

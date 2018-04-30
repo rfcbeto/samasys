@@ -16,44 +16,50 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author Roberto
+ *
+ */
 @Entity
 @Table(name="PESSOA")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 2319342040284124333L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_PESSOA")
-
+	@Column(name="ID_PESSOA")
 	private long id;
 
-	@Column(name = "REGISTRO_GERAL")
+	@Column(name="REGISTRO_GERAL")
 	private String rg;
 
-	@Column(name = "CPF")
+	@Column(name="CPF")
 	private String cpf;
-	
-	@Column(name = "NOME")
+
+	@Column(name="NOME")
 	private String nome;
 
-	@Column(name = "SEXO")
+	@Column(name="SEXO")
 	private String sexo;
 
-	@Column(name = "CELULAR")
+	@Column(name="CELULAR")
 	private String celular;
-	
-	@Column(name = "TELEFONE")
+
+	@Column(name="TELEFONE")
 	private String telefone;
 
-	@Column(name = "ESTADO_CIVIL")
+	@Column(name="ESTADO_CIVIL")
 	private String estadoCivil;
+
+	@Column(name="NATURALIDADE")
+	private String naturalidade;
 
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
-	
-	@OneToMany(mappedBy="pessoa", fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Endereco> enderecos;
 
 	public long getId() {
@@ -120,6 +126,14 @@ public class Pessoa implements Serializable{
 		this.estadoCivil = estadoCivil;
 	}
 
+	public String getNaturalidade() {
+		return naturalidade;
+	}
+
+	public void setNaturalidade(String naturalidade) {
+		this.naturalidade = naturalidade;
+	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
@@ -138,32 +152,16 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id 
-				+ ",\n rg=" + rg 
-				+ ",\n cpf=" + cpf 
-				+ ",\n nome=" + nome 
-				+ ",\n sexo=" + sexo 
-				+ ",\n celular=" + celular 
-				+ ",\n telefone=" + telefone 
-				+ ",\n estadoCivil=" + estadoCivil 
-				+ ",\n dataNascimento=" + dataNascimento 
-				+ ",\n enderecos=" + enderecos + "]";
+		return "Pessoa [id=" + id + ", rg=" + rg + ", cpf=" + cpf + ", nome=" + nome + ", sexo=" + sexo + ", celular="
+				+ celular + ", telefone=" + telefone + ", estadoCivil=" + estadoCivil + ", naturalidade=" + naturalidade
+				+ ", dataNascimento=" + dataNascimento + ", enderecos=" + enderecos + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
-		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
-		result = prime * result + ((estadoCivil == null) ? 0 : estadoCivil.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
 
@@ -176,53 +174,9 @@ public class Pessoa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (celular == null) {
-			if (other.celular != null)
-				return false;
-		} else if (!celular.equals(other.celular))
-			return false;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (dataNascimento == null) {
-			if (other.dataNascimento != null)
-				return false;
-		} else if (!dataNascimento.equals(other.dataNascimento))
-			return false;
-		if (enderecos == null) {
-			if (other.enderecos != null)
-				return false;
-		} else if (!enderecos.equals(other.enderecos))
-			return false;
-		if (estadoCivil == null) {
-			if (other.estadoCivil != null)
-				return false;
-		} else if (!estadoCivil.equals(other.estadoCivil))
-			return false;
 		if (id != other.id)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (rg == null) {
-			if (other.rg != null)
-				return false;
-		} else if (!rg.equals(other.rg))
-			return false;
-		if (sexo == null) {
-			if (other.sexo != null)
-				return false;
-		} else if (!sexo.equals(other.sexo))
-			return false;
-		if (telefone == null) {
-			if (other.telefone != null)
-				return false;
-		} else if (!telefone.equals(other.telefone))
 			return false;
 		return true;
 	}
+	
 }

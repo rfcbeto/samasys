@@ -12,8 +12,8 @@ import br.com.cadastro.model.Endereco;
 @Repository
 @EnableJpaRepositories("br.com.cadastro.repository")
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
-	
+	/*
 	@Query("SELECT e FROM Pessoa p, Endereco e WHERE p.nome = ?1 "
 			+ "and p.id = e.pessoa AND e.tipoEndereco in (1, 3)")
-	public List<Endereco> getEnderecoByNomePessoa(String nome);
+	public List<Endereco> getEnderecoByNomePessoa(String nome);*/
 }

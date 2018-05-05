@@ -1,4 +1,4 @@
-package org.cadastro.pessoa.web;
+package br.com.cadastro.pessoa.api;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

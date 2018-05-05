@@ -1,4 +1,4 @@
-package br.com.cadastro.restcontroller;
+package br.com.cadastro.pessoa.api.restcontroller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

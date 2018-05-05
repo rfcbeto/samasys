@@ -66,4 +66,19 @@ public class PessoaService {
 		
 		return clienteRepository.save(cliente);
 	}
+	
+	public List<Cliente> findAllClientes(){
+		List<Cliente> clientes = new ArrayList<>();
+		clientes = clienteRepository.findAll();
+		ClienteFTO fto = new ClienteFTO();
+		
+		for (Cliente c : clientes) {
+			System.out.println("Entidade: " + c.getNome());
+			System.out.println("--------------------------------------");
+			BeanUtils.copyProperties(c, fto); 
+			System.out.println("Objeto cliente: "+fto);
+		}
+		
+		return clientes;
+	}
 }

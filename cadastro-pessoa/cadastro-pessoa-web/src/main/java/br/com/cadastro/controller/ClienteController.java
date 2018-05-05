@@ -61,4 +61,22 @@ public class ClienteController {
 		LOGGER.info(">>> SALVAR PESSOA");
 		return mv;
 	}
+	
+	@RequestMapping(value="/total", method = RequestMethod.GET)
+	public ModelAndView total(Model model){
+		ModelAndView view = new ModelAndView(FORM);
+		model.addAttribute("fto", new ClienteFTO());
+		Long t = pessoaService.totalPessoas();
+		LOGGER.info("+++++Total de "+ t + " " + PessoaService.class.getSimpleName() +" no banco!+++++");
+		return view;
+	}
+	
+	@RequestMapping(value="/byTipoCliente", method = RequestMethod.GET)
+	public ModelAndView findByTipoCliente(Model model){
+		ModelAndView view = new ModelAndView(FORM);
+		model.addAttribute("fto", new ClienteFTO());
+		pessoaService.findByTipoCliente("varejo");
+		
+		return view;
+	}
 }

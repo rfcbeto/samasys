@@ -1,6 +1,5 @@
 package br.com.cadastro.venda;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -13,15 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.cadastro.produto.Produto;
 import br.com.cadastro.service.PessoaService;
-import br.com.cadastro.util.VendaConverter;
 
 @Controller
 @RequestMapping("/venda")
@@ -32,9 +30,6 @@ public class VendaController {
 	@Autowired
 	private VendaService service;
 
-	@Autowired
-	private VendaConverter converter;
-	
 	@Autowired
 	private PessoaService pessoaService;
 	
@@ -52,7 +47,6 @@ public class VendaController {
 	public ModelAndView cadastrarPessoa (@Valid @ModelAttribute("fto") VendaFTO fto, BindingResult result, 
 			HttpServletResponse response, RedirectAttributes redirectAttibutes){
 		ModelAndView mv = new ModelAndView("sucesso");
-	/*	
 		if(result.hasErrors()){
 			mv = new ModelAndView(FORM);
 			String errorMessage = "";
@@ -65,31 +59,18 @@ public class VendaController {
 			LOGGER.info(">>> Tipo que deu merda:\n-"+errorMessage);
 			return mv;
 		}
-		*/
 		
 		Venda venda = service.insert(getVenda());
 		mv.addObject("fto", new VendaFTO());
-		LOGGER.info("Venda: " + venda + " Cadastrada com sucesso!");
+		LOGGER.info("Venda: " + venda.getId() + " Cadastrada com sucesso!");
 		return mv;
 	}
 
-
 	private Venda getVenda() {
 		Venda venda = new Venda();
-		Produto produto = new Produto();
-		List<Produto> produtos = new ArrayList<>();
-		produto.setCor("Orange");
-		produto.setDescricao("produto de tecido");
-		produto.setTipo("Vestuario");
-		produto.setValor(47.00);
-		produtos.add(produto);
-		
 		venda.setCliente(pessoaService.findOneCliente(1L));
 		Locale local = new Locale("pt", "BR");
 		venda.setDataVenda(Calendar.getInstance(local));
-		
-		venda.setProdutos(produtos);
-		venda.setQuantidade(3);
 		venda.setStatus("Efetuado");
 		venda.setTotalVenda(320.00);
 		venda.setFormaPagamento("Dinheiro");

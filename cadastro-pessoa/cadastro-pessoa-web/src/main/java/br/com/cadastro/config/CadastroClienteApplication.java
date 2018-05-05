@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EntityScan("br.com.cadastro")
 @ComponentScan("br.com.cadastro")
-@EnableJpaRepositories("br.com.cadastro")
+@EnableJpaRepositories("br.com.cadastro.repository")
 @EnableAutoConfiguration
 public class CadastroClienteApplication {
 	

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,13 +33,7 @@ public class Venda implements Serializable{
 	@Column(name="STATUS")
 	private String status;
 
-	/*A quantidade não sera necessário devido ao relacionamento
-	 * com produto, a quantidade será calculada pela tabela de associação.
-	 * */
-	@Column(name="QUANTIDADE")
-	private int quantidade;
-	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false, fetch = FetchType.LAZY)
 	@JoinColumn(name="COD_CLIENTE", nullable=false, updatable=false)
 	private Cliente cliente;
 
@@ -51,10 +46,12 @@ public class Venda implements Serializable{
 	@Column(name="FORMA_PAGAMENTO")
 	private String formaPagamento;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinTable(name="PRODUTO_VENDA")
  	private List<Produto> produtos;
- 	/*
+ 	
+	
+	/*	
 		private Vendedor vendedor;
 		private TipoVenda tipoVenda;
 	*/
@@ -91,14 +88,6 @@ public class Venda implements Serializable{
 		this.totalVenda = totalVenda;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
 	public String getFormaPagamento() {
 		return formaPagamento;
 	}
@@ -123,19 +112,6 @@ public class Venda implements Serializable{
 		this.dataVenda = dataVenda;
 	}
 
-	
-
-	@Override
-	public String toString() {
-		return "Venda [id=" + id + 
-				",\n status=" + status + 
-				",\n quantidade=" + quantidade + 
-				",\n cliente=" + cliente + 
-				",\n totalVenda=" + totalVenda + 
-				",\n dataVenda=" + dataVenda + 
-				",\n formaPagamento=" + formaPagamento + 
-				",\n produtos=" + produtos + "]";
-	}
 
 	@Override
 	public int hashCode() {
@@ -146,7 +122,6 @@ public class Venda implements Serializable{
 		result = prime * result + ((formaPagamento == null) ? 0 : formaPagamento.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((produtos == null) ? 0 : produtos.hashCode());
-		result = prime * result + quantidade;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(totalVenda);
@@ -185,8 +160,6 @@ public class Venda implements Serializable{
 				return false;
 		} else if (!produtos.equals(other.produtos))
 			return false;
-		if (quantidade != other.quantidade)
-			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -195,5 +168,16 @@ public class Venda implements Serializable{
 		if (Double.doubleToLongBits(totalVenda) != Double.doubleToLongBits(other.totalVenda))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Venda [id=" + id + 
+				",\n status=" + status + 
+				",\n cliente=" + cliente + 
+				",\n totalVenda=" + totalVenda + 
+				",\n dataVenda=" + dataVenda + 
+				",\n formaPagamento=" + formaPagamento + 
+				",\n produtos=" + produtos + "]";
 	}
 }

@@ -59,11 +59,25 @@ public class PessoaService {
 	
 	public Cliente findOneCliente(Long id){
 		return clienteRepository.findOne(id);
-	};
+	}
 	
 	public Cliente insertCliente(ClienteFTO fto){
 		Cliente cliente = clienteConverter.convert(fto);
 		
 		return clienteRepository.save(cliente);
+	}
+	
+	
+	public Long totalPessoas(){
+		Long total = clienteRepository.count();
+		System.out.println("Total de que: " + total);
+		return total;
+	}
+
+	public void findByTipoCliente(String tipoCliente) {
+		List<Cliente> lCliente = clienteRepository.findByTipoCliente(tipoCliente);
+		for (Cliente cliente : lCliente) {
+			System.out.println(cliente.getNome() + ": " + cliente.getCpf());
+		}
 	}
 }

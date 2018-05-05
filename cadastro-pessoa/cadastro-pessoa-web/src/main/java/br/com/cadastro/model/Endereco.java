@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +50,7 @@ public class Endereco implements Serializable {
 	@Column(name="MUNICIPIO")
 	private String municipio;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="ID_PESSOA", nullable=false, updatable=false)
 	private Pessoa pessoa;
 

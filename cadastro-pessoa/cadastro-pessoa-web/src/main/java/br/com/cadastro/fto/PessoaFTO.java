@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class PessoaFTO {
 
 
@@ -21,6 +23,7 @@ public class PessoaFTO {
 	private String celular;
 	private String telefone;
 	private String estadoCivil;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 	private String naturalidade;
 	private EnderecoFTO endereco;

@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cadastro.exceptions.CustomNotFoundException;
+import br.com.cadastro.fto.PessoaFTO;
 import br.com.cadastro.model.Customer;
-import br.com.cadastro.model.Pessoa;
 import br.com.cadastro.service.CustomerService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	CustomerService customerService;
+	private CustomerService customerService;
 	
 	@RequestMapping(value="/teste", method=RequestMethod.GET)
 	public ModelAndView getTeste(){
@@ -41,11 +42,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/clientes")
-	public List<Pessoa> findCustomers(){
+	public List<PessoaFTO> findCustomers(){
 		
-		List<Pessoa> pessoas = customerService.findAllCustomers();
+		List<PessoaFTO> pessoas = customerService.findAllCustomers();
 		
-		if(null==pessoas){
+		if(null == pessoas){
 			throw new CustomNotFoundException("Nenhum cliente cadastrado!");
 		}
 		return pessoas;

@@ -1,4 +1,4 @@
-package br.com.cadastro.venda;
+package br.com.cadastro.controller;
 
 import java.util.Calendar;
 import java.util.List;
@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.cadastro.fto.VendaFTO;
+import br.com.cadastro.model.Venda;
 import br.com.cadastro.service.PessoaService;
+import br.com.cadastro.service.VendaService;
 
 @Controller
 @RequestMapping("/venda")

@@ -1,4 +1,4 @@
-package br.com.cadastro.produto;
+package br.com.cadastro.fto;
 
 import javax.validation.constraints.NotNull;
 

@@ -1,4 +1,4 @@
-package br.com.cadastro.venda;
+package br.com.cadastro.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -16,9 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import br.com.cadastro.cliente.Cliente;
-import br.com.cadastro.produto.Produto;
 
 @Entity
 @Table(name="VENDA")

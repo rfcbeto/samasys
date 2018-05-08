@@ -1,9 +1,10 @@
-package br.com.cadastro.util;
+package br.com.cadastro.converter;
 
 import org.springframework.stereotype.Component;
 
-import br.com.cadastro.venda.Venda;
-import br.com.cadastro.venda.VendaFTO;
+import br.com.cadastro.fto.VendaFTO;
+import br.com.cadastro.model.Venda;
+import br.com.cadastro.util.Converter;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;

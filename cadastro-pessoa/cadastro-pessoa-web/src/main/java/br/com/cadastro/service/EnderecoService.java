@@ -11,7 +11,6 @@ import br.com.cadastro.repository.EnderecoRepository;
 
 @Service
 public class EnderecoService {
-
 	
 	@Autowired
 	private EnderecoRepository repository;

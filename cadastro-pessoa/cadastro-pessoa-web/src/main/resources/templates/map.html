@@ -13,17 +13,15 @@
 		 <!-- FIM BOOTSTRAP -->
 		 <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}" />	
 		 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY6GIc60uSo1I-_JLtfc5Xq9cg0HlZ_9s"></script>
+		 
       	 <!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY6GIc60uSo1I-_JLtfc5Xq9cg0HlZ_9s&callback=loadMap()" async defer></script-->
       	 <!-- -19.990805, -44.017753 -->
       	 <script>
          	function loadMap(){
-         		
          		var myLatLng = new google.maps.LatLng(-19.990805, -44.017753);
-            	
          		var mapOptions={
                		center: myLatLng, 
-               		zoom: 12
+               		zoom: 15
             	};
          		
             	var map = new google.maps.Map(document.getElementById("map"),mapOptions);
@@ -31,16 +29,17 @@
             		position: myLatLng,
             		map: map,
             		draggable:true,
-            		title:"Arratar!"
+            		title:"Arrastar!"
             	});
          	}
          </script>
+        
 	</head>
 	<body onload="loadMap()">
 			<img th:src="@{/imagens/icone.png}" alt="Icone Cadastro" style="width:41px;height:44px" />
 			<h4>SISTEMA DE CADASTRO</h4>
 		<hr />
 			<div id="map" style="width:570px; height:580px;"></div>	
-	    
+	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY6GIc60uSo1I-_JLtfc5Xq9cg0HlZ_9s"></script>
 	</body>
 </html>

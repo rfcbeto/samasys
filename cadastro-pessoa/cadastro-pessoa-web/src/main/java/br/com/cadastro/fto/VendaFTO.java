@@ -1,22 +1,11 @@
-package br.com.cadastro.venda;
+package br.com.cadastro.fto;
 
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import br.com.cadastro.cliente.Cliente;
-import br.com.cadastro.fto.ClienteFTO;
 import br.com.cadastro.model.Pessoa;
-import br.com.cadastro.produto.Produto;
-import br.com.cadastro.produto.ProdutoFTO;
 
 public class VendaFTO {
 
@@ -26,7 +15,7 @@ public class VendaFTO {
 	@NotNull
 	private List<ProdutoFTO> produtos;
 	private Pessoa pessoa;
-	private ClienteFTO clienteFTO;
+	//private ClienteFTO clienteFTO;
 	private String formaPagamento;
 	private String status;
 	private Calendar dataVenda;

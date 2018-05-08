@@ -1,9 +1,9 @@
 package br.com.cadastro.validator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-
 import br.com.cadastro.fto.PessoaFTO;
 
 /**
@@ -12,7 +12,7 @@ import br.com.cadastro.fto.PessoaFTO;
  * Validação customizada.
  * Caso seja necessário ter validações muito específicas.
  * */
- 
+@Component 
 public class PessoaValidator implements Validator {
 
 	@Override

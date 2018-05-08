@@ -7,11 +7,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cadastro.cliente.Cliente;
 import br.com.cadastro.converter.ClienteConverter;
 import br.com.cadastro.converter.PessoaConverter;
 import br.com.cadastro.fto.ClienteFTO;
 import br.com.cadastro.fto.PessoaFTO;
+import br.com.cadastro.model.Cliente;
 import br.com.cadastro.model.Pessoa;
 import br.com.cadastro.repository.ClienteRepository;
 import br.com.cadastro.repository.PessoaRepository;
@@ -42,8 +42,19 @@ public class PessoaService {
 			BeanUtils.copyProperties(p, fto); 
 			System.out.println("Objeto: "+fto);
 		}
-		
 		return pessoas;
+	}
+	
+	public List<PessoaFTO> findAllFTO(){
+		List<Pessoa> pessoas = repository.findAll();
+		List<PessoaFTO> lPessoaFto = new ArrayList<>();
+		PessoaFTO fto;
+		for (Pessoa p : pessoas) {
+			fto = new PessoaFTO();
+			BeanUtils.copyProperties(p, fto); 
+			lPessoaFto.add(fto);
+		}
+		return lPessoaFto;
 	}
 	
 	public Pessoa findOne(Long id) {
@@ -66,7 +77,6 @@ public class PessoaService {
 		
 		return clienteRepository.save(cliente);
 	}
-	
 	
 	public Long totalPessoas(){
 		Long total = clienteRepository.count();

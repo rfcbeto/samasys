@@ -8,8 +8,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cadastro.fto.PessoaFTO;
 import br.com.cadastro.model.Customer;
-import br.com.cadastro.model.Pessoa;
 
 @Service
 public class CustomerService {
@@ -30,8 +30,8 @@ public class CustomerService {
 		return custStorage.get(name.toUpperCase());
 	}
 
-	public List<Pessoa> findAllCustomers() {
-		List<Pessoa> pessoas = service.findAll();
-		return pessoas;
+	public List<PessoaFTO> findAllCustomers() {
+		List<PessoaFTO> lPessoaFTO = service.findAllFTO();
+		return lPessoaFTO;
 	}
 }

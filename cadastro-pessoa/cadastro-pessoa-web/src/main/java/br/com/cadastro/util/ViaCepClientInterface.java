@@ -1,4 +1,4 @@
-package br.com.cadastro.componete;
+package br.com.cadastro.util;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

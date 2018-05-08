@@ -22,6 +22,4 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
         /*Teste resultado da requisição.*/
         registry.addStatusController("/detail", HttpStatus.BAD_REQUEST); 
     }
-	
-
 }

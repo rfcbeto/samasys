@@ -6,10 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.cadastro.cliente.Cliente;
 import br.com.cadastro.fto.ClienteFTO;
+import br.com.cadastro.model.Cliente;
 import br.com.cadastro.model.Endereco;
-import br.com.cadastro.model.Pessoa;
 import br.com.cadastro.util.Converter;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;

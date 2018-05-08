@@ -1,4 +1,4 @@
-package br.com.cadastro.venda;
+package br.com.cadastro.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cadastro.produto.Produto;
+import br.com.cadastro.model.Produto;
+import br.com.cadastro.model.Venda;
 import br.com.cadastro.repository.ProdutoRepository;
 import br.com.cadastro.repository.VendaRepository;
 

@@ -32,5 +32,4 @@ public class PessoaConverter implements Converter<Pessoa, PessoaFTO, PessoaFTO>{
 		
 		return pessoa;
 	}
-
 }

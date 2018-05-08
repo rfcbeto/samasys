@@ -1,4 +1,4 @@
-package br.com.cadastro.cliente;
+package br.com.cadastro.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,9 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import br.com.cadastro.model.Endereco;
-import br.com.cadastro.model.Pessoa;
 
 @Entity
 @Table(name="CLIENTE")

@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.cadastro.cliente.Cliente;
-
 /**
  * @author roberto.coelho
  *

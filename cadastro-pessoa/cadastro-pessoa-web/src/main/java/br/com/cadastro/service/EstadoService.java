@@ -21,7 +21,6 @@ public class EstadoService {
 		for (Estado estado : estados) {
 			System.out.println(estado);
 		}
-		
 		return estados;
 	}
 	

@@ -1,4 +1,4 @@
-package br.com.cadastro.produto;
+package br.com.cadastro.controller;
 
 import java.util.List;
 
@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import br.com.cadastro.fto.ProdutoFTO;
+import br.com.cadastro.model.Produto;
+import br.com.cadastro.service.ProdutoService;
 
 @Controller
 @RequestMapping("/produto")

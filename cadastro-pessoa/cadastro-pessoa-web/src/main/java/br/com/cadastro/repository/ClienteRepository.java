@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.cadastro.cliente.Cliente;
 import br.com.cadastro.dao.repository.GenericRepository;
+import br.com.cadastro.model.Cliente;
 
 @Repository
 public interface ClienteRepository extends GenericRepository<Cliente, Long>{

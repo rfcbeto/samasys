@@ -1,4 +1,4 @@
-package br.com.cadastro.componete;
+package br.com.cadastro.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

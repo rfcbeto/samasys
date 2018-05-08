@@ -20,7 +20,6 @@ import br.com.cadastro.model.PersonForm;
 @RequestMapping(value="/cadTeste")
 public class TesteController extends WebMvcConfigurerAdapter{
 
-
 	@Override
     public  void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
@@ -33,8 +32,6 @@ public class TesteController extends WebMvcConfigurerAdapter{
 		
         return "form";
     }
-
-
     
     @PostMapping("/checkPerson")
     public String checkPersonInfo(@Valid @ModelAttribute("personForm") PersonForm personForm, BindingResult result, 
@@ -43,9 +40,6 @@ public class TesteController extends WebMvcConfigurerAdapter{
         if (result.hasErrors()) {
             return "form";
         }
-
         return "result";
     }
-
-
 }
